@@ -1,0 +1,189 @@
+// ESTRUTURA BÁSICA HTML:
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Números</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Gerador de Números</h2>
+
+        <div class="input-group">
+            <div class="input-field">
+                <label for="min">Mín:</label>
+                <input id="min" type="number" name="min"/>
+            </div>
+
+            <div class="input-field">
+                <label for="max">Máx:</label>
+                <input id="max" type="number" name="max"/>
+            </div>
+        </div>
+
+        <button class="generate">Gerar</button>
+
+        <div class="resultado">
+            <span>00</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+//ESTILIZAÇÃO:
+
+
+-> Reset da página:
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+-> Fundo da página:
+
+    body {
+        background-color: #121214;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+-> Fundo do conteúdo da página:
+
+    .container {
+        background-color: #343439;
+        padding: 30px 40px;
+        min-width: 470px;
+        color:#efefef;
+        box-shadow: 10px 10px 10px rgba(0,0,0,0.389);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+-> Título da aplicação:
+
+    .container h2 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+
+-> Campo dos formulários:
+
+    .input-group {
+        display: flex;
+        padding: 20px 0px;
+        gap:50px;
+    }
+
+-> Formulário:
+
+    .input-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+-> Label:
+
+    .input-field label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 18px;
+    }
+
+-> Caixinha do input:
+
+    .input-field input {
+        background-color: transparent;
+        border:none;
+        border-bottom: 2px solid #7336ff;
+        font-size: 18px;
+        border-radius: 2px;
+        padding: 5px;
+        color:#fff;
+    }
+
+    .input-field input:focus {
+        outline: none;
+        border-bottom: 3px solid #7336ff;
+    }
+
+-> Botão de Gerar:
+
+    .generate {
+        background-color: #7336ff;
+        border:none;
+        padding: 12px 20px;
+        border-radius: 4px;
+        width: 100%;
+        margin: 20px 0px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer; 
+    }
+
+
+-> Campo de resultado :
+
+    .generate {
+        background-color: #7336ff;
+        border:none;
+        padding: 12px 20px;
+        border-radius: 4px;
+        width: 100%;
+        margin: 20px 0px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer; 
+    }
+
+
+
+
+//SCRIPTS DA APLICAÇÃO:
+
+
+-> Armazenar o botão em uma variável e adicionar um evento de clique a ele:
+
+    const button = document.querySelector('.generate');
+    button.addEventListener('click', function() {});
+
+
+-> Pegar os valores digitados nos inputs e armazena-los em variáveis:
+
+    const min = parseInt(document.querySelector('#min').value);
+    const max = parseInt(document.querySelector('#max').value);
+
+
+-> Usar os dois valores em uma equação e sortear um valor aleatório:
+
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+-> Checar se o valor é válido ou não e caso não seja, mostrar uma mensagem na tela:
+
+    if(isNaN(result)) {
+        result = 'Valor Inválido'
+    }
+
+
+-> Mostrar o valor sorteado e resultante da equação no campo resultado:
+
+    document.querySelector('.resultado > span').textContent = result;
